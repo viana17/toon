@@ -43,6 +43,31 @@ jobs:
     <<: *build_definition
     docker:
       - image: ruby:2.3
+  build6:
+    docker:
+      - image: ruby
+    steps:
+      - checkout
+  build7:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.7
+  build8:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.6
+  build9:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.5
+  build10:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.4
+  build11:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.3
 
 workflows:
   version: 2
@@ -54,3 +79,10 @@ workflows:
       - build3
       - build4
       - build5
+      - build6
+      - build7
+      - build8
+      - build8
+      - build10
+      - build11
+
