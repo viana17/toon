@@ -13,7 +13,6 @@ working_dir: &working_dir ~/app
         name: Run tests
         command: |
           chmod u+x install.sh && ./install.sh
-        no_output_timeout: 240m
 
 version: 2.0
 
