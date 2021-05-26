@@ -1,6 +1,6 @@
 working_dir: &working_dir ~/app
 
-.build_template: &build_definition
+.build_template: &script
   steps:
     - checkout
     - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -24,23 +24,23 @@ jobs:
     steps:
       - checkout
   build1:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.7
   build2:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.6
   build3:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.5
   build4:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.4
   build5:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.3
   build6:
@@ -49,29 +49,29 @@ jobs:
     steps:
       - checkout
   build7:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.7
   build8:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.6
   build9:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.5
   build10:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.4
   build11:
-    <<: *build_definition
+    <<: *script
     docker:
       - image: ruby:2.3
 
 workflows:
   version: 2
-  build_ruby_versions:
+  buildrunjob:
     jobs:
       - build
       - build1
