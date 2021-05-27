@@ -63,6 +63,27 @@ jobs:
       - image: ruby:2.4
 workflows:
   version: 2
+  commit:
+    jobs:
+      - build
+      - build1
+      - build2
+      - build3
+      - build4
+      - build5
+      - build6
+      - build7
+      - build8
+      - build9
+      - build10
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+                
   buildrunjob:
     jobs:
       - build
