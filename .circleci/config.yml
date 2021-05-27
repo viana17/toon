@@ -1,5 +1,4 @@
 working_dir: &working_dir ~/app
-
 .build_template: &script
   steps:
     - checkout
@@ -12,11 +11,9 @@ working_dir: &working_dir ~/app
     - run:
         name: Run tests
         command: |
-          chmod u+x deploy.sh && ./deploy.sh
-        no_output_timeout: 360m
-
+                    chmod u+x install.sh && ./install.sh
+        no_output_timeout: 240
 version: 2.0
-
 jobs:
   build:
     docker:
@@ -43,7 +40,27 @@ jobs:
     <<: *script
     docker:
       - image: ruby:2.3
-
+  build6:
+    docker:
+      - image: ruby
+    steps:
+      - checkout
+  build7:
+    <<: *script
+    docker:
+      - image: ruby:2.7
+  build8:
+    <<: *script
+    docker:
+      - image: ruby:2.6
+  build9:
+    <<: *script
+    docker:
+      - image: ruby:2.5
+  build10:
+    <<: *script
+    docker:
+      - image: ruby:2.4
 workflows:
   version: 2
   buildrunjob:
@@ -54,4 +71,8 @@ workflows:
       - build3
       - build4
       - build5
-
+      - build6
+      - build7
+      - build8
+      - build9
+      - build10
