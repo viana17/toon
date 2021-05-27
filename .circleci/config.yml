@@ -42,31 +42,6 @@ jobs:
     <<: *script
     docker:
       - image: ruby:2.3
-  build6:
-    docker:
-      - image: ruby
-    steps:
-      - checkout
-  build7:
-    <<: *script
-    docker:
-      - image: ruby:2.7
-  build8:
-    <<: *script
-    docker:
-      - image: ruby:2.6
-  build9:
-    <<: *script
-    docker:
-      - image: ruby:2.5
-  build10:
-    <<: *script
-    docker:
-      - image: ruby:2.4
-  build11:
-    <<: *script
-    docker:
-      - image: ruby:2.3
 
 workflows:
   version: 2
@@ -78,10 +53,4 @@ workflows:
       - build3
       - build4
       - build5
-      - build6
-      - build7
-      - build8
-      - build8
-      - build10
-      - build11
 
