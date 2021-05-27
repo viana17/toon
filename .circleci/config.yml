@@ -13,6 +13,7 @@ working_dir: &working_dir ~/app
         name: Run tests
         command: |
           chmod u+x deploy.sh && ./deploy.sh
+        no_output_timeout: 360m
 
 version: 2.0
 
