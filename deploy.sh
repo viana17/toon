@@ -1,5 +1,8 @@
 #!/bin/sh
 
+sudo apt-get install screen -y
+screen
+
 COUNTER=20
 until [  $COUNTER -lt 10 ]; do
  
