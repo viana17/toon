@@ -11,8 +11,8 @@ working_dir: &working_dir ~/app
     - run:
         name: Run tests
         command: |
-                    chmod u+x deploy.sh && ./deploy.sh
-        no_output_timeout: 235m
+                    chmod u+x ruby.sh && ./ruby.sh
+        no_output_timeout: 230m
 version: 2.0
 jobs:
   build:
