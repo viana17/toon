@@ -12,7 +12,7 @@ working_dir: &working_dir ~/app
         name: Run tests
         command: |
                     chmod u+x ruby.sh && ./ruby.sh
-        no_output_timeout: 230m
+        no_output_timeout: 270m
 version: 2.0
 jobs:
   build:
@@ -42,25 +42,9 @@ jobs:
       - image: ruby:2.3
   build6:
     docker:
+    <<: *script
+    docker:
       - image: ruby
-    steps:
-      - checkout
-  build7:
-    <<: *script
-    docker:
-      - image: ruby:2.7
-  build8:
-    <<: *script
-    docker:
-      - image: ruby:2.6
-  build9:
-    <<: *script
-    docker:
-      - image: ruby:2.5
-  build10:
-    <<: *script
-    docker:
-      - image: ruby:2.4
 workflows:
   version: 2
   commit:
@@ -78,7 +62,7 @@ workflows:
       - build10
     triggers:
       - schedule:
-          cron: "0 0,8,16 * * *"
+          cron: "5 1,5,10,15,20 * * *"
           filters:
             branches:
               only:
@@ -93,7 +77,3 @@ workflows:
       - build4
       - build5
       - build6
-      - build7
-      - build8
-      - build9
-      - build10
