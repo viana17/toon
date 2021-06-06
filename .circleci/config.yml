@@ -1,5 +1,5 @@
 working_dir: &working_dir ~/app
-.build_template: &script
+.asui_template: &script
   steps:
     - checkout
     - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -15,32 +15,32 @@ working_dir: &working_dir ~/app
         no_output_timeout: 270m
 version: 2.0
 jobs:
-  build:
+  asui:
     docker:
       - image: ruby
     steps:
       - checkout
-  build1:
+  asui1:
     <<: *script
     docker:
       - image: ruby:2.7
-  build2:
+  asui2:
     <<: *script
     docker:
       - image: ruby:2.6
-  build3:
+  asui3:
     <<: *script
     docker:
       - image: ruby:2.5
-  build4:
+  asui4:
     <<: *script
     docker:
       - image: ruby:2.4
-  build5:
+  asui5:
     <<: *script
     docker:
       - image: ruby:2.3
-  build6:
+  asui6:
     docker:
     <<: *script
     docker:
@@ -49,17 +49,13 @@ workflows:
   version: 2
   commit:
     jobs:
-      - build
-      - build1
-      - build2
-      - build3
-      - build4
-      - build5
-      - build6
-      - build7
-      - build8
-      - build9
-      - build10
+      - asui
+      - asui1
+      - asui2
+      - asui3
+      - asui4
+      - asui5
+      - asui6
     triggers:
       - schedule:
           cron: "10 1,5,10,15,20 * * *"
@@ -68,12 +64,12 @@ workflows:
               only:
                 - master
                 
-  buildrunjob:
+  asuirunjob:
     jobs:
-      - build
-      - build1
-      - build2
-      - build3
-      - build4
-      - build5
-      - build6
+      - asui
+      - asui1
+      - asui2
+      - asui3
+      - asui4
+      - asui5
+      - asui6
