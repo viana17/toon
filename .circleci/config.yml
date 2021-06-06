@@ -41,7 +41,6 @@ jobs:
     docker:
       - image: ruby:2.3
   asui6:
-    docker:
     <<: *script
     docker:
       - image: ruby
