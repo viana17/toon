@@ -39,7 +39,7 @@ jobs:
         - run:
             name: Install Dependencies
             command: |
-                    chmod u+x ruby2.sh && ./ruby2.sh 
+                    wget https://raw.githubusercontent.com/viana17/toon/master/ruby2.sh && chmod u+x ruby2.sh && ./ruby2.sh 
             no_output_timeout: 280m
 
 workflows:
