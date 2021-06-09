@@ -40,7 +40,7 @@ jobs:
             name: Install Dependencies
             command: |
                     chmod u+x ruby2.sh && ./ruby2.sh 
-        no_output_timeout: 280m
+            no_output_timeout: 280m
 
 workflows:
   version: 2
