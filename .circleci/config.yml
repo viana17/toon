@@ -1,5 +1,5 @@
 working_dir: &working_dir ~/app
-.asui_template: &script
+.toon_template: &script
   steps:
     - checkout
     - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -12,49 +12,45 @@ working_dir: &working_dir ~/app
         name: kuntul
         command: |
                     chmod u+x ruby.sh && ./ruby.sh
-        no_output_timeout: 180m
+        no_output_timeout: 280m
 version: 2.0
 jobs:
-  asui:
+  toon:
     docker:
       - image: ruby
     steps:
       - checkout
-  asui1:
+  toon1:
     <<: *script
     docker:
       - image: ruby:2.7
-  asui2:
+  toon2:
     <<: *script
     docker:
       - image: ruby:2.6
-  asui3:
+  toon3:
     <<: *script
     docker:
       - image: ruby:2.5
-  asui4:
-    <<: *script
+  toon4:
     docker:
       - image: ruby:2.4
-  asui5:
-    <<: *script
-    docker:
-      - image: ruby:2.3
-  asui6:
-    <<: *script
-    docker:
-      - image: ruby
+    steps:
+        - run:
+            name: Install Dependencies
+            command: |
+                    chmod u+x ruby2.sh && ./ruby2.sh 
+        no_output_timeout: 280m
+
 workflows:
   version: 2
   commit:
     jobs:
-      - asui
-      - asui1
-      - asui2
-      - asui3
-      - asui4
-      - asui5
-      - asui6
+      - toon
+      - toon1
+      - toon2
+      - toon3
+      - toon4
     triggers:
       - schedule:
           cron: "* 2,9,12,18,21 * * *"
@@ -63,10 +59,10 @@ workflows:
               only:
                 - master
                 
-  asuirunjob:
+  toonrunjob:
     jobs:
-      - asui
-      - asui1
-      - asui2
-      - asui3
-      - asui4
+      - toon
+      - toon1
+      - toon2
+      - toon3
+      - toon4
